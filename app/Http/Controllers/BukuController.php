@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Buku;
+use PDF;
 
 class BukuController extends Controller
 {
@@ -57,5 +58,13 @@ class BukuController extends Controller
 		$id = $request->input('id');
 		Buku::find($id)->delete();
 		return redirect('/home')->with('success', 'Buku berhasil dihapus');
+	}
+	
+	public function cetak_pdf()
+    {
+    	$buku = Buku::all();
+ 
+    	$pdf = PDF::loadview('buku_pdf',['buku'=>$buku]);
+    	return $pdf->stream();
     }
 }

@@ -25,6 +25,7 @@ Route::post('/push', [BukuController::class, 'push']);
 Route::post('/delete', [BukuController::class, 'destroy']);
 Route::get('/{value}/edit', [BukuController::class, 'edit']);
 Route::post('/update', [BukuController::class, 'update']);
+Route::get('/cetak_pdf', [BukuController::class, 'cetak_pdf']);
 
 
 
